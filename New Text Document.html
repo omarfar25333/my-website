@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Images</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Colorful gradient background */
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 50px; /* Spacing between images */
+        }
+
+        .image-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 1s ease-in-out;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .image-container:hover .image {
+            transform: scale(1.1); /* Make image bigger on hover */
+        }
+
+        .flying {
+            transform: translateX(1000px) translateY(-1000px) rotate(720deg);
+        }
+
+        .left-images {
+            display: flex;
+            flex-direction: column;
+            animation: moveLeft 2s ease-in-out forwards;
+        }
+
+        .right-images {
+            display: flex;
+            flex-direction: column;
+            animation: moveRight 2s ease-in-out forwards;
+        }
+
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(-1000px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes moveRight {
+            0% {
+                transform: translateX(1000px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>এইটি ওমর ফারুক দ্বারা নির্মিত</h1> <!-- Big text added at the top -->
+
+    <div class="container">
+        <div class="left-images">
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=1" alt="Image 1">
+            </div>
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=2" alt="Image 2">
+            </div>
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=3" alt="Image 3">
+            </div>
+        </div>
+
+        <div class="right-images">
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=4" alt="Image 4">
+            </div>
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=5" alt="Image 5">
+            </div>
+            <div class="image-container" onclick="flyImage(this)">
+                <img class="image" src="https://picsum.photos/200/200?random=6" alt="Image 6">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flyImage(element) {
+            element.classList.add("flying");
+
+            // Reset animation after it finishes
+            setTimeout(function() {
+                element.classList.remove("flying");
+            }, 1000); // 1 second (duration of the animation)
+        }
+    </script>
+
+</body>
+</html>
+
+
